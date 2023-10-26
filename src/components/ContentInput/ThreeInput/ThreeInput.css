@@ -1,0 +1,8 @@
+textarea {
+    resize: none;
+    height: 100%;
+}
+
+.inputArea {
+    height: 35vh;
+}
