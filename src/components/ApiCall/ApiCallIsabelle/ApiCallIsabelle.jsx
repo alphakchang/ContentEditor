@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-    apiKey: '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',
-    dangerouslyAllowBrowser: true // Note to self: bring this to the backend at some point
-});
-
 const textToHtml = (text) => {
     return text.split('\n').map((str, index, array) => (
         <React.Fragment key={index}>
@@ -15,24 +10,67 @@ const textToHtml = (text) => {
     ));
 }
 
-
 class ApiCallIsabelle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            response: ''
+            proxy: props.proxy,
+            response: '',
+            openai: null
+        }
+    }
+
+    componentDidMount() {
+        this.initializeOpenAI();
+    }
+
+    async initializeOpenAI() {
+        try {
+            let response = await fetch(`${this.state.proxy}/apikey`);
+
+            if (!response.ok) {
+                throw new Error('Unable to retrieve API Key');
+            }
+
+            let data = await response.json();
+            let key = data.key;
+
+            const openaiInit = new OpenAI({
+                apiKey: key,
+                dangerouslyAllowBrowser: true
+            });
+
+            this.setState({ openai: openaiInit });
+
+        } catch (error) {
+            console.error('Could not fetch API key', error);
+        }
+    }
+
+    async ensureOpenAIInitialized() {
+        if (!this.state.openai) {
+            await this.initializeOpenAI();
+        }
+
+        // Check if openai is still not initialized, then throw an error.
+        if (!this.state.openai) {
+            throw new Error('OpenAI failed to initialize');
         }
     }
 
     buildFinalPrompt() {
         const finalPrompt = `${this.props.prompt} Text 1: ${this.props.text1}. Text 2: ${this.props.text2}. Text 3: ${this.props.text3}`;
-        console.log(finalPrompt);
         return finalPrompt;
     }
 
     async callApi() {
+
+        await this.ensureOpenAIInitialized();
+
+        const { openai } = this.state;
+
         const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4",
             messages: [
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": this.buildFinalPrompt()}

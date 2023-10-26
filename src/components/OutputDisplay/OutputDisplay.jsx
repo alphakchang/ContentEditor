@@ -11,7 +11,7 @@ const instructions = [
 ];
 
 
-const OutputDisplay = ({ content }) => {
+const OutputDisplay = ({ proxy, content }) => {
     
     const apiCallRef0 = React.createRef();
     const apiCallRef1 = React.createRef();
@@ -39,16 +39,16 @@ const OutputDisplay = ({ content }) => {
             {/* row 2 - outputs*/}
             <div className="row">
                 <div className="col-3 p-3">
-                    <ApiCall ref={apiCallRef0} content={content} prompt={instructions[0]}/>
+                    <ApiCall ref={apiCallRef0} proxy={proxy} content={content} prompt={instructions[0]}/>
                 </div>
                 <div className="col-3 p-3">
-                    <ApiCall ref={apiCallRef1} content={content} prompt={instructions[1]}/>
+                    <ApiCall ref={apiCallRef1} proxy={proxy} content={content} prompt={instructions[1]}/>
                 </div>
                 <div className="col-3 p-3">
-                    <ApiCall ref={apiCallRef2} content={content} prompt={instructions[2]}/>
+                    <ApiCall ref={apiCallRef2} proxy={proxy} content={content} prompt={instructions[2]}/>
                 </div>
                 <div className="col-3 p-3">
-                    <ApiCall ref={apiCallRef3} content={content} prompt={instructions[3]}/>
+                    <ApiCall ref={apiCallRef3} proxy={proxy} content={content} prompt={instructions[3]}/>
                 </div>
             </div>
         </div>

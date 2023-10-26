@@ -4,7 +4,7 @@ import AlexApiCall from "./AlexApiCall";
 
 const instruction = "Delete redundant words to make the total character count falls below ";
 
-const AlexOutput = ({ input, charLimit }) => {
+const AlexOutput = ({ proxy, input, charLimit }) => {
     
     const apiCall = React.createRef();
 
@@ -20,7 +20,7 @@ const AlexOutput = ({ input, charLimit }) => {
             {/* row 2 - outputs*/}
             <div className="row">
                 <div className="col-6 p-3">
-                    <AlexApiCall ref={apiCall} text={input} limit={charLimit} prompt={instruction}/>
+                    <AlexApiCall ref={apiCall} proxy={proxy} text={input} limit={charLimit} prompt={instruction}/>
                 </div>
             </div>
         </div>

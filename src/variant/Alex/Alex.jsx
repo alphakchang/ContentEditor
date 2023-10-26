@@ -5,6 +5,7 @@ import AlexOutput from './AlexOutput';
 import { ArrowDownCircleFill } from 'react-bootstrap-icons'
 
 const initialState = {
+    proxy: 'http://localhost:5001',
     input: '',
     charLimit: 0
 }
@@ -18,18 +19,18 @@ class Alex extends Component {
 
     onInputChange = (event) => {
         this.setState({input: event.target.value}, () => {
-            console.log(`intput: ${this.state.input}`);
+            // console.log(`intput: ${this.state.input}`);
         });
     }
 
     onNumberChange = (event) => {
         this.setState({charLimit: event.target.value}, () => {
-            console.log(`Character limit: ${this.state.charLimit}`);
+            // console.log(`Character limit: ${this.state.charLimit}`);
         });
     }
 
     render() {
-        const { input, charLimit } = this.state;
+        const { proxy, input, charLimit } = this.state;
         return (
             <div className='container-lg'>
                 <ContentInput onInputChange={this.onInputChange} />
@@ -41,7 +42,7 @@ class Alex extends Component {
                         <NumberVariable onNumberChange={this.onNumberChange} />
                     </span>
                 </div>
-                <AlexOutput input={input} charLimit={charLimit} />
+                <AlexOutput proxy={proxy} input={input} charLimit={charLimit} />
             </div>
         );
     }
