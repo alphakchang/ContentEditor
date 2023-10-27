@@ -1,0 +1,8 @@
+textarea {
+    resize: none;
+    height: 100%;
+}
+
+.sourceArea {
+    height: 5vh;
+}

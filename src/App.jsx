@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
-import ContentInput from './components/ContentInput/ContentInput';
+import ContentInput from './components/Input/ContentInput/ContentInput';
 import OutputDisplay from './components/OutputDisplay/OutputDisplay';
 import Isabelle from './variant/Isabelle/Isabelle';
 import Alex from './variant/Alex/Alex';
+import Lilisamo from './variant/Lilisamo/Lilisamo';
 
 const initialState = {
   proxy: 'http://localhost:5001',
@@ -43,9 +44,11 @@ class App extends Component {
                                   </>
                                   }/>
 
-                  <Route path='/isabelle' element={<Isabelle />} />
+                  <Route path='/isabelle' element={<Isabelle proxy={proxy} />} />
 
-                  <Route path='/alex' element={<Alex />} />
+                  <Route path='/alex' element={<Alex proxy={proxy} />} />
+
+                  <Route path='/lilisamo' element={<Lilisamo proxy={proxy} />} />
 
                 </Routes>
               </div>

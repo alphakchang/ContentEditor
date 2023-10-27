@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import ContentInput from '../../components/ContentInput/ContentInput';
-import NumberVariable from '../../components/ContentInput/NumberVariable/NumberVariablae';
+import ContentInput from '../../components/Input/ContentInput/ContentInput';
+import NumberVariable from '../../components/Input/NumberVariable/NumberVariable';
 import AlexOutput from './AlexOutput';
 import { ArrowDownCircleFill } from 'react-bootstrap-icons'
 
-const initialState = {
-    proxy: 'http://localhost:5001',
-    input: '',
-    charLimit: 0
-}
-
 class Alex extends Component {
     
-    constructor() {
-        super();
-        this.state = initialState;
+    constructor(props) {
+        super(props);
+        this.state = {
+            proxy: props.proxy,
+            input: '',
+            charLimit: 0
+        };
     }
 
     onInputChange = (event) => {

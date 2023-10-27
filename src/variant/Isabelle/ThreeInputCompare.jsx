@@ -1,6 +1,6 @@
 import React from "react";
-import ApiCallIsabelle from "../../ApiCall/ApiCallIsabelle/ApiCallIsabelle";
-import SendPromptButton from "../../SendPromptButton/SendPromptButton";
+import ApiCallIsabelle from "./ApiCallIsabelle";
+import SendPromptButton from "../../components/SendPromptButton/SendPromptButton";
 
 const instruction = "Which of the following is the best written text, and why?";
 

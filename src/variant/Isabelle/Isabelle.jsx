@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import ThreeInput from '../../components/ContentInput/ThreeInput/ThreeInput';
-import ThreeInputCompare from '../../components/OutputDisplay/ThreeInputCompare/ThreeInputCompare';
-
-const initialState = {
-    proxy: 'http://localhost:5001',
-    input1: '',
-    input2: '',
-    input3: ''
-}
+import ThreeInput from '../../components/Input/ThreeInput/ThreeInput';
+import ThreeInputCompare from './ThreeInputCompare';
 
 class Isabelle extends Component {
     
-    constructor() {
-        super();
-        this.state = initialState;
+    constructor(props) {
+        super(props);
+        this.state = {
+            proxy: props.proxy,
+            input1: '',
+            input2: '',
+            input3: ''
+        };
     }
 
     onInputChange1 = (event) => {
