@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Prompt from '../../components/Input/Prompt/Prompt';
 import Source from '../../components/Input/Source/Source';
+import LilisamoOutput from './LilisamoOutput';
 
 class Lilisamo extends Component {
 
@@ -33,6 +34,7 @@ class Lilisamo extends Component {
             <div className="container-lg">
                 <Prompt onPromptChange={this.onPromptChange} />
                 <Source onSourceChange={this.onSourceChange} />
+                <LilisamoOutput proxy={proxy} prompt={prompt} source={source} />
             </div>
         );
     }
