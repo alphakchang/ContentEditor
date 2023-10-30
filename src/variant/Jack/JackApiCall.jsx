@@ -10,7 +10,7 @@ const textToHtml = (text) => {
     ));
 }
 
-class LilisamoApiCall extends Component {
+class JackApiCall extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,32 +59,8 @@ class LilisamoApiCall extends Component {
     }
 
     buildFinalPrompt() {
-        const finalPrompt = this.props.prompt + ": " + this.props.source;
+        const finalPrompt = this.props.title + ", with tone " + this.props.tone;
         return finalPrompt;
-    }
-
-    async callGPT4Api() {
-
-        await this.ensureOpenAIInitialized();
-
-        const { openai } = this.state;
-
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4",
-            messages: [
-                {"role": "system", "content": "You will always translate into German"},
-                {"role": "user", "content": this.buildFinalPrompt()}
-            ],
-            stream: true,
-            temperature: 0.1
-        });
-    
-        let responseContent = '';
-        for await (const chunk of completion) {
-            if (chunk.choices && chunk.choices[0].delta && chunk.choices[0].delta.content) {
-                this.setState({ response: responseContent += chunk.choices[0].delta.content });
-            }
-        }
     }
 
     async callFTApi() {
@@ -94,13 +70,13 @@ class LilisamoApiCall extends Component {
         const { openai } = this.state;
 
         const completion = await openai.chat.completions.create({
-            model: "ft:gpt-3.5-turbo-0613:personal::8EQYfDdM", // model fine-tuned with Lilisamo German TM
+            model: "ft:gpt-3.5-turbo-0613:personal::8EJm5OAj", // using model fine-tuned on Balsam articles
             messages: [
-                {"role": "system", "content": "You will always translate into German"},
+                {"role": "system", "content": "You will write an article in French, on the topic and tone that user requested."},
                 {"role": "user", "content": this.buildFinalPrompt()}
             ],
             stream: true,
-            temperature: 0.1
+            temperature: 0.9
         });
     
         let responseContent = '';
@@ -109,10 +85,6 @@ class LilisamoApiCall extends Component {
                 this.setState({ response: responseContent += chunk.choices[0].delta.content });
             }
         }
-    }
-
-    runGPT4Call() {
-        this.callGPT4Api();
     }
     
     runFTCall() {
@@ -128,4 +100,4 @@ class LilisamoApiCall extends Component {
     }
 }
 
-export default LilisamoApiCall;
+export default JackApiCall;

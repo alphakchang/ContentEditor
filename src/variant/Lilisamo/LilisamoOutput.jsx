@@ -14,12 +14,12 @@ const LilisamoOutput = ({ proxy, prompt, source }) => {
                 <SendPromptButton buttonName="Run Double Inference"
                     onClick={() => {
                         apiCall0.current.runGPT4Call();
-                        apiCall1.current.runFTCall();
+                        // apiCall1.current.runFTCall();
                     }}
                 />
             </div>
 
-            <div className="row">
+            <div className="row my-3">
                 <div className="col-6">
                     <span className="border rounded border-light p-1">GPT<Icon4Circle /></span>
                 </div>

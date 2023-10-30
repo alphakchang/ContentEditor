@@ -8,6 +8,7 @@ import OutputDisplay from './components/OutputDisplay/OutputDisplay';
 import Isabelle from './variant/Isabelle/Isabelle';
 import Alex from './variant/Alex/Alex';
 import Lilisamo from './variant/Lilisamo/Lilisamo';
+import Jack from './variant/Jack/Jack';
 
 const initialState = {
   proxy: 'http://localhost:5001',
@@ -49,6 +50,8 @@ class App extends Component {
                   <Route path='/alex' element={<Alex proxy={proxy} />} />
 
                   <Route path='/lilisamo' element={<Lilisamo proxy={proxy} />} />
+
+                  <Route path='/jack' element={<Jack proxy={proxy} />} />
 
                 </Routes>
               </div>

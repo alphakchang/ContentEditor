@@ -1,0 +1,8 @@
+textarea {
+    resize: none;
+    height: 100%;
+}
+
+.titleArea {
+    height: 5vh;
+}
