@@ -14,7 +14,7 @@ const LilisamoOutput = ({ proxy, prompt, source }) => {
                 <SendPromptButton buttonName="Run Double Inference"
                     onClick={() => {
                         apiCall0.current.runGPT4Call();
-                        // apiCall1.current.runFTCall();
+                        apiCall1.current.runFTCall();
                     }}
                 />
             </div>
