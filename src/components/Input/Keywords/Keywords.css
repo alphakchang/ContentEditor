@@ -1,0 +1,8 @@
+textarea {
+    resize: none;
+    height: 100%;
+}
+
+.keywordsArea {
+    height: 5vh;
+}

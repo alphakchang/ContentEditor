@@ -2,7 +2,7 @@ import React from 'react';
 import SendPromptButton from '../../components/SendPromptButton/SendPromptButton';
 import JackApiCall from './JackApiCall';
 
-const JackOutput = ({ proxy, title, tone }) => {
+const JackOutput = ({ proxy, title, tone, keywords }) => {
 
     const apiCall = React.createRef();
 
@@ -29,7 +29,7 @@ const JackOutput = ({ proxy, title, tone }) => {
             <div className="row">
                 <div className="d-flex justify-content-center">
                     <div className="col-8 d-flex justify-content-center">
-                        <JackApiCall ref={apiCall} proxy={proxy} title={title} tone={tone}/>
+                        <JackApiCall ref={apiCall} proxy={proxy} title={title} tone={tone} keywords={keywords} />
                     </div>
                 </div>
             </div>

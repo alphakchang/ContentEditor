@@ -59,7 +59,8 @@ class JackApiCall extends Component {
     }
 
     buildFinalPrompt() {
-        const finalPrompt = this.props.title + ", with tone " + this.props.tone;
+        const finalPrompt = `${this.props.title}, with tone ${this.props.tone}, include these keywords: ${this.props.keywords}.`
+        console.log(finalPrompt);
         return finalPrompt;
     }
 
