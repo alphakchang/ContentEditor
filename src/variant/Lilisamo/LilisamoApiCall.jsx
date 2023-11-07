@@ -59,7 +59,7 @@ class LilisamoApiCall extends Component {
     }
 
     buildFinalPrompt() {
-        const finalPrompt = this.props.prompt + ": " + this.props.source;
+        const finalPrompt = `Instructions: ${this.props.prompt}. Content: ${this.props.source}`;
         return finalPrompt;
     }
 
@@ -72,7 +72,7 @@ class LilisamoApiCall extends Component {
         const completion = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [
-                {"role": "system", "content": "You will always translate into German"},
+                {"role": "system", "content": "You will be translating the source into German based on instructions in the prompt."},
                 {"role": "user", "content": this.buildFinalPrompt()}
             ],
             stream: true,
@@ -96,8 +96,8 @@ class LilisamoApiCall extends Component {
         const completion = await openai.chat.completions.create({
             model: "ft:gpt-3.5-turbo-0613:personal::8EQYfDdM", // model fine-tuned with Lilisamo German TM
             messages: [
-                {"role": "system", "content": "You will always translate into German"},
-                {"role": "user", "content": this.buildFinalPrompt()}
+                {"role": "system", "content": "You are a professional translator."},
+                {"role": "user", "content": this.props.source} // only looks at source right now because it is translating the prompts as well
             ],
             stream: true,
             temperature: 0.1
