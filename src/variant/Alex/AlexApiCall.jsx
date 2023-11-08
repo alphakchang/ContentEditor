@@ -70,9 +70,9 @@ class AlexApiCall extends Component {
         const { openai } = this.state;
 
         const completion = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-4-1106-preview",
             messages: [
-                {"role": "system", "content": "Always produce content less than the character limit."},
+                {"role": "system", "content": "You will always generate content less than the character limit."},
                 {"role": "user", "content": this.buildFinalPrompt()}
             ],
             stream: true,

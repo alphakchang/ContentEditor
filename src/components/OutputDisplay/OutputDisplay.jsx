@@ -4,10 +4,10 @@ import ApiCall from '../ApiCall/ApiCall';
 
 
 const instructions = [
-    "proofread for grammar and spelling errors, respond in the same language as the following text",
+    "detect the language, proofread for grammar and spelling errors",
     "detect the language, then rewrite professionally in the same language",
-    "rewrite to make it sound friendly in the same language as the following text",
-    "write a concise summary, respond in the same language as the following text"
+    "detect the language, then rewrite to make it sound friendly in the same language",
+    "detect the language, then write a concise summary in the same language"
 ];
 
 

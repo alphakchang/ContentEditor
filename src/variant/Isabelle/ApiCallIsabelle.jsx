@@ -70,7 +70,7 @@ class ApiCallIsabelle extends Component {
         const { openai } = this.state;
 
         const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4-1106-preview",
             messages: [
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": this.buildFinalPrompt()}
