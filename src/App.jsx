@@ -11,7 +11,7 @@ import Lilisamo from './variant/Lilisamo/Lilisamo';
 import Jack from './variant/Jack/Jack';
 
 const initialState = {
-  proxy: 'http://localhost:5001',
+  proxy: 'https://naga.alphacrc.com:5001',
   input: ''
 }
 
